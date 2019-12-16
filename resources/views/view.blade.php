@@ -10,5 +10,7 @@
  <img src="{{ URL::to('/') }}/images/{{ $data->image }}" class="img-thumbnail" />
  <h3>First Name - {{ $data->first_name }} </h3>
  <h3>Last Name - {{ $data->last_name }}</h3>
+ <h3>Email - {{ $data->email }}</h3>
+ <h3>Password - {{ $data->password }}</h3>
 </div>
 @endsection

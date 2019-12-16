@@ -18,6 +18,8 @@
 		<th width="10%">Image</th>
 		<th width="30%">First Name</th>
 		<th width="30%">Last Name</th>
+		<th width="30%">Email</th>
+		<th width="30%">Password</th>
 		<th width="40%">Action</th>
 	</tr>
 	@foreach($data as $row)
@@ -25,6 +27,8 @@
 			<td><img src="{{ URL::to('/') }}/images/{{ $row->image }}" class="img-thumbnail" width="75" /></td>
 			<td>{{ $row->first_name }}</td>
 			<td>{{ $row->last_name }}</td>
+			<td>{{ $row->email }}</td>
+			<td>{{ $row->password }}</td>
 			<td>
 				
 				<form action="{{ route('crud.destroy', $row->id) }}" method="post">

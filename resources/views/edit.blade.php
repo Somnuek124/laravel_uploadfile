@@ -1,3 +1,4 @@
+
 @extends('parent')
 
 @section('main')
@@ -33,6 +34,29 @@
         <input type="text" name="last_name" value="{{ $data->last_name }}" class="form-control input-lg" />
        </div>
       </div>
+
+      <div class="form-group">
+        <label class="col-md-4 text-right">Enter Last Name</label>
+        <div class="col-md-8">
+         <input type="text" name="last_name" value="{{ $data->last_name }}" class="form-control input-lg" />
+        </div>
+       </div>
+
+       <div class="form-group">
+        <label class="col-md-4 text-right">Enter Email</label>
+        <div class="col-md-8">
+         <input type="email" name="email" value="{{ $data->email }}" class="form-control input-lg" />
+        </div>
+       </div>
+
+   
+       <div class="form-group">
+        <label class="col-md-4 text-right">Enter Password</label>
+        <div class="col-md-8">
+         <input type="password" name="password" value="{{ $data->password }}" class="form-control input-lg" />
+        </div>
+       </div>
+
       <br />
       <br />
       <br />

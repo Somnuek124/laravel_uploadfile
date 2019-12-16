@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Crud;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class CrudsController extends Controller
 {
@@ -40,7 +42,9 @@ class CrudsController extends Controller
         $request->validate([
             'first_name'    =>  'required',
             'last_name'     =>  'required',
-            'image'         =>  'required|image|max:2048'
+            'image'         =>  'required|image|max:2048',
+            'email'         =>  'required',
+            'password'      =>  ['required', 'string', 'min:8', 'confirmed']
         ]);
 
         $image = $request->file('image');
@@ -50,7 +54,9 @@ class CrudsController extends Controller
         $form_data = array(
             'first_name'       =>   $request->first_name,
             'last_name'        =>   $request->last_name,
-            'image'            =>   $new_name
+            'image'            =>   $new_name,
+            'email'            =>   $request->email,
+            'password'         => Hash::make($request['password'])
         );
 
         Crud::create($form_data);
@@ -81,7 +87,6 @@ class CrudsController extends Controller
         $data = Crud::findOrFail($id);
         return view('edit', compact('data'));
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -98,7 +103,9 @@ class CrudsController extends Controller
             $request->validate([
                 'first_name'    =>  'required',
                 'last_name'     =>  'required',
-                'image'         =>  'image|max:2048'
+                'image'         =>  'image|max:2048',
+                'email'         =>  'required',
+                'password'      =>  'required'
             ]);
 
             $image_name = rand() . '.' . $image->getClientOriginalExtension();
@@ -108,14 +115,18 @@ class CrudsController extends Controller
         {
             $request->validate([
                 'first_name'    =>  'required',
-                'last_name'     =>  'required'
+                'last_name'     =>  'required',
+                'email'         =>  'required',
+                'password'      =>  'required'
             ]);
         }
 
         $form_data = array(
             'first_name'       =>   $request->first_name,
             'last_name'        =>   $request->last_name,
-            'image'            =>   $image_name
+            'image'            =>   $image_name,
+            'email'            =>   $request->email,
+            'password' => Hash::make($request['password'])
         );
   
         Crud::whereId($id)->update($form_data);
