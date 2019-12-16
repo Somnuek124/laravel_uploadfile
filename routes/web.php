@@ -11,11 +11,4 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('image', 'ImageController@index');
-Route::get('save', 'ImageController@save');
-
 Route::resource('crud','CrudsController');
