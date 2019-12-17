@@ -40,11 +40,11 @@ class CrudsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'first_name'    =>  'required',
-            'last_name'     =>  'required',
-            'image'         =>  'required|image|max:2048',
-            'email'         =>  'required',
-            'password'      =>  ['required', 'string', 'min:8', 'confirmed']
+            'p_name'      =>  'required',
+            'p_price'     =>  'required',
+            'image'       =>  'required|image|max:4000',
+            'qty'         =>  'required',
+            'detail'      =>  'required'
         ]);
 
         $image = $request->file('image');
@@ -52,11 +52,11 @@ class CrudsController extends Controller
         $new_name = rand() . '.' . $image->getClientOriginalExtension();
         $image->move(public_path('images'), $new_name);
         $form_data = array(
-            'first_name'       =>   $request->first_name,
-            'last_name'        =>   $request->last_name,
-            'image'            =>   $new_name,
-            'email'            =>   $request->email,
-            'password'         => Hash::make($request['password'])
+            'p_name'         =>   $request->p_name,
+            'p_price'        =>   $request->p_price,
+            'image'          =>   $new_name,
+            'qty'            =>   $request->qty,
+            'detail'         =>   $request->detail
         );
 
         Crud::create($form_data);
@@ -101,11 +101,11 @@ class CrudsController extends Controller
         if($image != '')
         {
             $request->validate([
-                'first_name'    =>  'required',
-                'last_name'     =>  'required',
-                'image'         =>  'image|max:2048',
-                'email'         =>  'required',
-                'password'      =>  'required'
+                'p_name'      =>  'required',
+                'p_price'     =>  'required',
+                'image'       =>  'image|max:2048',
+                'qty'         =>  'required',
+                'detail'      =>  'required'
             ]);
 
             $image_name = rand() . '.' . $image->getClientOriginalExtension();
@@ -114,19 +114,19 @@ class CrudsController extends Controller
         else
         {
             $request->validate([
-                'first_name'    =>  'required',
-                'last_name'     =>  'required',
-                'email'         =>  'required',
-                'password'      =>  'required'
+                'p_name'      =>  'required',
+                'p_price'     =>  'required',
+                'qty'         =>  'required',
+                'detail'      =>  'required'
             ]);
         }
 
         $form_data = array(
-            'first_name'       =>   $request->first_name,
-            'last_name'        =>   $request->last_name,
-            'image'            =>   $image_name,
-            'email'            =>   $request->email,
-            'password' => Hash::make($request['password'])
+            'p_name'   =>   $request->p_name,
+            'p_price'  =>   $request->p_price,
+            'image'    =>   $image_name,
+            'qty'      =>   $request->qty,
+            'detail'   =>   $request->detail
         );
   
         Crud::whereId($id)->update($form_data);

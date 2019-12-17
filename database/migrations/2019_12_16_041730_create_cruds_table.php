@@ -15,11 +15,11 @@ class CreateCrudsTable extends Migration
     {
         Schema::create('cruds', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('first_name');
-            $table->string('last_name');
+            $table->string('p_name');
+            $table->double('p_price', 20, 2);
             $table->string('image');
-            $table->string('email');
-            $table->string('password');
+            $table->string('qty');
+            $table->string('detail');
             $table->timestamps();
         });
     }

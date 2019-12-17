@@ -1,34 +1,38 @@
-@extends('parent')
+@extends('layouts.app')
+@section('content')
 
-@section('main')
+<div class="container">
 
-<div align="right">
-	<a href="{{ route('crud.create') }}" class="btn btn-success btn-sm">Add</a>
-</div>
-<br />
-@if ($message = Session::get('success'))
-<div class="alert alert-success">
-	<p>{{ $message }}</p>
-</div>
-@endif
+	<div align="right">
+		<a href="{{ route('crud.create') }}" class="btn btn-success btn-sm">Add Product</a>
+	</div>
+	<br />
+	@if ($message = Session::get('success'))
+	<div class="alert alert-success">
+		<p>{{ $message }}</p>
+	</div>
+	@endif
 
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="jumbotron text-center">
 
 <table class="table table-bordered table-striped">
 	<tr>
 		<th width="10%">Image</th>
-		<th width="30%">First Name</th>
-		<th width="30%">Last Name</th>
-		<th width="30%">Email</th>
-		<th width="30%">Password</th>
+		<th width="15%">ProductName</th>
+		<th width="15%">ProductPrice</th>
+		<th width="10%">Quantity</th>
+		<th width="20%">Detail</th>
 		<th width="40%">Action</th>
 	</tr>
 	@foreach($data as $row)
 		<tr>
 			<td><img src="{{ URL::to('/') }}/images/{{ $row->image }}" class="img-thumbnail" width="75" /></td>
-			<td>{{ $row->first_name }}</td>
-			<td>{{ $row->last_name }}</td>
-			<td>{{ $row->email }}</td>
-			<td>{{ $row->password }}</td>
+			<td>{{ $row->p_name }}</td>
+			<td>{{ $row->p_price }}</td>
+			<td>{{ $row->qty }}</td>
+			<td>{{ $row->detail }}</td>
 			<td>
 				
 				<form action="{{ route('crud.destroy', $row->id) }}" method="post">
@@ -42,5 +46,9 @@
 		</tr>
 	@endforeach
 </table>
+</div>
+</div>
+</div>
+</div>
 {!! $data->links() !!}
 @endsection

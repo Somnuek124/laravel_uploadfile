@@ -1,16 +1,25 @@
-@extends('parent')
+@extends('layouts.app')
+@section('content')
 
-@section('main')
-
-<div class="jumbotron text-center">
- <div align="right">
-  <a href="{{ route('crud.index') }}" class="btn btn-default">Back</a>
- </div>
- <br />
- <img src="{{ URL::to('/') }}/images/{{ $data->image }}" class="img-thumbnail" />
- <h3>First Name - {{ $data->first_name }} </h3>
- <h3>Last Name - {{ $data->last_name }}</h3>
- <h3>Email - {{ $data->email }}</h3>
- <h3>Password - {{ $data->password }}</h3>
+<div class="container">
+    <div align="right">
+        <a href="{{ route('crud.index') }}" class="btn btn-default">Back</a>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('View') }}</div>
+                <div class="card-body">
+                    <div class="jumbotron text-center">
+                    <img src="{{ URL::to('/') }}/images/{{ $data->image }}" class="img-thumbnail" />
+                    <p>Product Name - {{ $data->p_name }} </p>
+                    <p>Product Price - {{ $data->p_price }}</p>
+                    <p>Quantity - {{ $data->qty }}</p>
+                    <p>Detail - {{ $data->detail }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection

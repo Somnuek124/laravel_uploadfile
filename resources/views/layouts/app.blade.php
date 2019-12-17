@@ -18,6 +18,35 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+
+    <style>
+    .modal-sp{
+			height:300px;
+			width:275px; 
+			background-color:navajowhite;
+			border-radius: 5px;
+			padding-top: 15px;
+			padding-left: 10px;
+			padding-right: 10px;
+			margin-top: 20px;
+			margin-bottom: -5px;
+			margin-left: 5px;
+			margin-right: 5px;
+			text-align: center;
+			box-shadow: 0px 1px 3px #848484;
+        }
+        .person {
+            border: 10px solid transparent;
+            margin-bottom: 25px;
+            width: 80%;
+            height: 80%;
+            opacity: 0.7;
+        }
+        .person:hover {
+        border-color: #f1f1f1;
+        }
+    </style>
 </head>
 <body>
     <div id="app">
@@ -26,6 +55,7 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
+                
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -49,6 +79,11 @@
                                 </li>
                             @endif
                         @else
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('crud.index') }}"><strong>{{ __('Add Products') }}</strong></a>
+    
+                    </li>
+                        
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
