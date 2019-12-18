@@ -20,7 +20,6 @@ class CrudsController extends Controller
         ->with('i', (request()->input('page', 1) - 1) * 5);
        
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -31,6 +30,11 @@ class CrudsController extends Controller
         return view('create');
     }
 
+    public function welcome($id)
+    {
+        $data = Crud::findOrFail($id);
+        return view('welcome', compact('data'));
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -144,7 +148,6 @@ class CrudsController extends Controller
     {
         $data = Crud::findOrFail($id);
         $data->delete();
-
         return redirect('crud')->with('success', 'Data is successfully deleted');
     }
 }

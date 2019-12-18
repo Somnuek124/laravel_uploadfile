@@ -22,7 +22,7 @@
 
     <style>
     .modal-sp{
-			height:300px;
+			height:325px;
 			width:275px; 
 			background-color:navajowhite;
 			border-radius: 5px;

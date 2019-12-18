@@ -28,7 +28,6 @@
                         </td>
                     </tr>
                     
-
                 @endforeach
                 </tbody>
                 </table>
@@ -36,8 +35,9 @@
         @else
             <div class="card-body">
                 <h3>You need to log in. <a href="/login">Click here to login</a></h3>
-              
             </div>
+
+           
         @endif
     </div>                         
 </div>
