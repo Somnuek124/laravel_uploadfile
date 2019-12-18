@@ -16,6 +16,7 @@ Route::get('/', function () {
 });
 
 Route::resource('crud','CrudsController');
+Route::get('/welcome', 'CrudsController@welcome');
 
 Auth::routes();
 

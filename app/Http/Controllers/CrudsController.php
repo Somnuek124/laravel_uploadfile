@@ -30,9 +30,9 @@ class CrudsController extends Controller
         return view('create');
     }
 
-    public function welcome($id)
+    public function welcome()
     {
-        $data = Crud::findOrFail($id);
+        $data = Crud::latest()->paginate();
         return view('welcome', compact('data'));
     }
     /**

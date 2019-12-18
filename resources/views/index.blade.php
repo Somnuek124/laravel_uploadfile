@@ -51,18 +51,4 @@
 </div>
 </div>
 {!! $data->links() !!}
-<div class="container">
-    <div class="row">
-    @foreach($data as $row)
-    <div class="modal-sp">
-        <div> <img src="{{ URL::to('/') }}/images/{{ $row->image }}" class="img-thumbnail" width="75%" /> </div>
-        <div style="color:black"><strong>{{ $row->p_name }}</strong>  </div>	
-        <div style="color:red"> {{ $row->p_price }} บาท</div>	
-            <div class="form-group text-center">
-            <input type="submit" name="Add" class="btn btn-primary" value="เพิ่มลงตะกร้า" />
-           </div>
-    </div>
-    @endforeach
-</div>
-</div>
 @endsection
